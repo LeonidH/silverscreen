@@ -7,11 +7,12 @@ declare module '*.scss' {
   export default content;
 }
 
-interface SvgrComponent extends React.FunctionComponent<React.SVGAttributes<SVGElement>> {}
+interface SvgComponent
+  extends React.FunctionComponent<React.SVGAttributes<SVGElement>> {}
 
 declare module '*.svg' {
   const svgUrl: string;
-  const svgComponent: SvgrComponent;
+  const svgComponent: SvgComponent;
   export default svgUrl;
-  export { svgComponent as ReactComponent }
+  export { svgComponent as ReactComponent };
 }
