@@ -6,4 +6,5 @@ export * from './CircularProgress';
 export * from './Grid';
 export * from './Icons';
 export * from './Media';
+export * from './Stack';
 export * from './TextField';
