@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ReceivingCodeViaSmsForm } from 'silverscreen';
 

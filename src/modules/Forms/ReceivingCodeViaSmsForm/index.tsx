@@ -5,15 +5,11 @@ import * as yup from 'yup';
 import {
   SCArrowCircleRightIcon,
   SCButton,
-  SCButtonProps,
   SCStack,
-  SCTextField,
-  SCTextFieldProps
+  SCTextField
 } from '../../../components';
 
 export interface ReceivingCodeViaSmsFormProps {
-  phoneTextField?: SCTextFieldProps;
-  submitButton?: SCButtonProps;
   onSubmitHandler: (values: ReceivingCodeViaSmsFormValues) => void;
 }
 
@@ -28,11 +24,11 @@ export const fromReceivingCodeViaSmsSchema = yup.object().shape({
   phone: yup
     .string()
     .matches(phoneRegExp, 'Введите номер телефона в формате 375xxxxxxxxx')
+    .length(12, 'Введите номер телефона в формате 375xxxxxxxxx')
+    .required('Обязательно заполните это поле')
 });
 
 export const ReceivingCodeViaSmsForm = ({
-  phoneTextField,
-  submitButton,
   onSubmitHandler
 }: ReceivingCodeViaSmsFormProps) => {
   return (
@@ -60,7 +56,6 @@ export const ReceivingCodeViaSmsForm = ({
                   error={formik.touched.phone && Boolean(formik.errors.phone)}
                   helperText={formik.touched.phone && formik.errors.phone}
                   variant='filled'
-                  {...phoneTextField}
                 />
                 <SCButton
                   type='submit'
@@ -68,7 +63,6 @@ export const ReceivingCodeViaSmsForm = ({
                   variant='contained'
                   color='primary'
                   endIcon={<SCArrowCircleRightIcon />}
-                  {...submitButton}
                 />
               </SCStack>
             </form>
